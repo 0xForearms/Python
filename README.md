@@ -1,2 +1,1 @@
-# UploadCheck.py
-File Extension checker for Bounty on HTB
+# Just some of the stuff I've done to further my knowledge of Python.
