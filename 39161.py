@@ -29,7 +29,7 @@ def main():
     try:
 
         if len(sys.argv) != 5:
-            print("usage: %s <Remote host> <Remote port> <Local host> <Local port>" % sys.argv[0])
+            print("Usage: %s <Remote host> <Remote port> <Local host> <Local port>" % sys.argv[0])
             print("Also, don't forget to host nc.exe on a webserver on port 80, and run this multiple times")
             return
 
@@ -60,5 +60,7 @@ def main():
         nc_run()
     except:
         print("[.]Something went wrong..!")
+        print("Usage: %s <Remote host> <Remote port> <Local host> <Local port>" % sys.argv[0])
+        
 if __name__ == '__main__':
         main()
