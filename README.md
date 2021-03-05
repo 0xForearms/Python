@@ -9,8 +9,6 @@
 
 Just a couple of scripts from the Udemy class Python for Pentesters by Christi Zot
 
-[InfoScanner](./Python_For_Pentesters/infoscanner.py)
-
-[NMapScanner](./Python_For_Pentesters/nmapscanner.py)
-
-[SubDomain Scanner](./Python_For_Pentesters/subdomain.py)
+[InfoScanner](./Python_For_Pentesters/infoscanner.py)  
+[NMapScanner](./Python_For_Pentesters/nmapscanner.py)  
+[SubDomain Scanner](./Python_For_Pentesters/subdomain.py)  
